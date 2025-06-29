@@ -1,12 +1,33 @@
 @import "tailwindcss";
 
+@layer base {
+
+  html {
+    --surface-color: white;
+
+    --primary-color: #5e82a6;
+    --on-primary-color: var(--color-stone-200);
+
+    --accent-color: #c69963;
+  }
+
+  html.dark {
+    --surface-color: var(--color-stone-600);
+
+    --primary-color: #5e82a6;
+    --on-primary-color: var(--color-stone-200);
+
+    --accent-color: #c69963;
+  }
+}
+
 @theme {
-  --color-surface: white;
+  --color-surface: var(--surface-color);
 
-  --color-primary: #5e82a6;
-  --color-on-primary: var(--color-stone-200);
+  --color-primary: var(--primary-color);
+  --color-on-primary: var(--on-primary-color);
 
-  --color-accent: #c69963;
+  --color-accent: var(--accent-color);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
