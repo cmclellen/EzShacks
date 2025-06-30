@@ -6,7 +6,7 @@ import { useDarkMode } from "../_contexts/DarkModeContext";
 function DarkMode() {
   const {isDarkMode, toggleDarkMode} = useDarkMode();
   return (
-    <button className="text-xl" onClick={toggleDarkMode}>
+    <button className="text-xl grid" onClick={toggleDarkMode}>
       {isDarkMode?<FaSun />:<FaMoon />}
     </button>
   );

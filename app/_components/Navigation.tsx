@@ -1,7 +1,7 @@
 import DarkMode from "./DarkMode";
 
 type NavItemProps = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 function NavItem({ children }: NavItemProps) {
@@ -19,9 +19,9 @@ function Navigation() {
         <NavItem>Stays</NavItem>
         <NavItem>About</NavItem>
         <NavItem>Sign in</NavItem>
-        <NavItem>
+        {/* <NavItem>
           <DarkMode />
-        </NavItem>
+        </NavItem> */}
       </ul>
     </nav>
   );
