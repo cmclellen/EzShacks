@@ -30,9 +30,9 @@ export default function RootLayout({
           className={`${josefin.className} antialiased bg-surface flex flex-col h-screen text-primary px-5`}
         >
           <Header />
-          <main className="w-full max-w-7xl mx-auto">
-            <div>{children}</div>
-          </main>
+          <div className="flex-1 grid px-8 py-12">
+            <main className="max-w-7xl mx-auto">{children}</main>
+          </div>
           <Footer />
         </body>
       </DarkModeProvider>

@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 @layer base {
-
   html {
     --surface-color: white;
 
-    --primary-color: #5e82a6;
+    --primary-color: var(--color-stone-500);
     --on-primary-color: var(--color-stone-200);
 
     --accent-color: #c69963;
+    --on-accent-color: var(--color-yellow-800);
   }
 
   html.dark {
     --surface-color: var(--color-stone-600);
 
     --primary-color: var(--color-stone-200);
-    --on-primary-color: var(--color-stone-200);
+    --on-primary-color: var(--color-stone-600);
 
-    --accent-color: #c69963;
+    --accent-color: var(--color-yellow-800);
+    --on-accent-color: #c69963;
   }
 }
 
@@ -28,6 +29,7 @@
   --color-on-primary: var(--on-primary-color);
 
   --color-accent: var(--accent-color);
+  --color-on-accent: var(--on-accent-color);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
