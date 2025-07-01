@@ -3,6 +3,7 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import { DarkModeProvider } from "./_contexts/DarkModeContext";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -24,15 +25,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${josefin.className} antialiased bg-surface grid grid-rows-[auto_1fr_auto] h-screen text-primary`}
-      >
-        <Header />
-        <main className="w-full max-w-7xl mx-auto">
-          <div>{children}</div>
-        </main>
-        <Footer />
-      </body>
+      <DarkModeProvider>
+        <body
+          className={`${josefin.className} antialiased bg-surface flex flex-col h-screen text-primary px-5`}
+        >
+          <Header />
+          <main className="w-full max-w-7xl mx-auto">
+            <div>{children}</div>
+          </main>
+          <Footer />
+        </body>
+      </DarkModeProvider>
     </html>
   );
 }

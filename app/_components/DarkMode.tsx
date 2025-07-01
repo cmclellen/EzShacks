@@ -1,10 +1,20 @@
-import { CiSun } from "react-icons/ci";
+"use client";
 
-function DarkMode() {
+import { FaMoon, FaSun } from "react-icons/fa6";
+import { useDarkMode } from "../_contexts/DarkModeContext";
+
+type DarkModeProps = {};
+
+function DarkMode(_props: DarkModeProps) {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   return (
-    <div className="text-xl">
-      <CiSun />
-    </div>
+    <button
+      className="text-xl grid"
+      onClick={toggleDarkMode}
+      suppressHydrationWarning
+    >
+      {isDarkMode ? <FaSun /> : <FaMoon />}
+    </button>
   );
 }
 
