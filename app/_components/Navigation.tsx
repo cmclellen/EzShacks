@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import dynamic from "next/dynamic";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {
@@ -10,11 +11,16 @@ export const revalidate = 0;
 
 type NavItemProps = {
   readonly children: React.ReactNode;
+  readonly isPadded?: boolean;
 };
 
-function NavItem({ children }: NavItemProps) {
+function NavItem({ children, isPadded = true }: NavItemProps) {
   return (
-    <li className="hover:bg-primary hover:text-on-primary px-3 py-1 rounded-md cursor-pointer">
+    <li
+      className={clsx("rounded-md cursor-pointer z-10", {
+        "hover:bg-primary hover:text-on-primary px-3 py-1": isPadded,
+      })}
+    >
       {children}
     </li>
   );
@@ -24,12 +30,12 @@ function Navigation() {
   return (
     <nav>
       <ul className="flex items-center gap-4 text-sm font-semibold">
-        <NavItem>Stays</NavItem>
+        <NavItem>Shacks</NavItem>
         <NavItem>About</NavItem>
         <NavItem>Sign in</NavItem>
-        <li>
+        <NavItem isPadded={false}>
           <DarkMode />
-        </li>
+        </NavItem>
       </ul>
     </nav>
   );

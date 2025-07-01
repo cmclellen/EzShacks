@@ -9,7 +9,7 @@ function DarkMode(_props: DarkModeProps) {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   return (
     <button
-      className="text-xl grid"
+      className="text-xl grid cursor-pointer"
       onClick={toggleDarkMode}
       suppressHydrationWarning
     >
