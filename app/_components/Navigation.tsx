@@ -1,4 +1,12 @@
-import DarkMode from "./DarkMode";
+"use client";
+
+import dynamic from "next/dynamic";
+
+const DarkMode = dynamic(() => import("./DarkMode"), {
+  ssr: false,
+});
+
+export const revalidate = 0;
 
 type NavItemProps = {
   readonly children: React.ReactNode;
@@ -19,9 +27,9 @@ function Navigation() {
         <NavItem>Stays</NavItem>
         <NavItem>About</NavItem>
         <NavItem>Sign in</NavItem>
-        {/* <NavItem>
+        <li>
           <DarkMode />
-        </NavItem> */}
+        </li>
       </ul>
     </nav>
   );

@@ -24,11 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
     <html lang="en">
       <DarkModeProvider>
         <body
-          className={`${josefin.className} antialiased bg-surface flex flex-col h-screen text-primary`}
+          className={`${josefin.className} antialiased bg-surface flex flex-col h-screen text-primary px-5`}
         >
           <Header />
           <main className="w-full max-w-7xl mx-auto">
