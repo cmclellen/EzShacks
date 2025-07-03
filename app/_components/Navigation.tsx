@@ -11,8 +11,10 @@ import {
 } from "@headlessui/react";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import Link from "next/link";
+import { useRef, useState } from "react";
 import { HiBars3, HiBell, HiXMark } from "react-icons/hi2";
+import useClickOutside from "../_hooks/useClickOutside";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {
   ssr: false,
@@ -22,23 +24,30 @@ export const revalidate = 0;
 
 type NavItemProps = {
   readonly children: React.ReactNode;
-  readonly isPadded?: boolean;
   readonly className?: string;
+  readonly href?: string;
 };
 
-function NavItem({ children, className, isPadded = true }: NavItemProps) {
+function NavItem({ children, className, href }: NavItemProps) {
   return (
     <li
       className={clsx(
         className,
-        "rounded-md cursor-pointer z-10 w-full md:w-auto text-center",
-        {
-          "hover:bg-primary hover:text-on-primary py-3 md:px-3 md:py-1":
-            isPadded,
-        }
+        "rounded-md cursor-pointer z-10 w-full md:w-auto text-center grid"
       )}
     >
-      {children}
+      {href ? (
+        <Link
+          className={clsx(
+            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary"
+          )}
+          href={href}
+        >
+          {children}
+        </Link>
+      ) : (
+        children
+      )}
     </li>
   );
 }
@@ -49,6 +58,11 @@ type NavigationProps = {
 
 function Navigation({ children }: NavigationProps) {
   const [open, setOpen] = useState(false);
+  const navigation = useRef(null);
+  useClickOutside(navigation, () => {
+    setOpen(false);
+  });
+
   return (
     <nav className="relative z-20 w-screen flex items-center justify-between">
       <div>{children}</div>
@@ -63,18 +77,19 @@ function Navigation({ children }: NavigationProps) {
       </button>
 
       <ul
+        ref={navigation}
         className={clsx(
-          "flex p-0 rounded-md md:flex-row items-center text-sm font-semibold bg-surface absolute left-0 right-0 top-16 shadow transition-all duration-200 md:static md:top-0 md:shadow-none md:flex md:gap-4 md:bg-transparent",
+          "flex p-0 rounded-md md:flex-row items-center text-sm font-semibold bg-surface absolute left-0 right-0 top-16 shadow-2xl transition-all duration-200 md:static md:top-0 md:shadow-none md:flex md:gap-4 md:bg-transparent",
           {
             "flex-col": open,
             hidden: !open,
           }
         )}
       >
-        <NavItem>Shacks</NavItem>
-        <NavItem>About</NavItem>
-        <NavItem>Sign in</NavItem>
-        <NavItem isPadded={false} className="hidden md:flex">
+        <NavItem href="/shacks">Shacks</NavItem>
+        <NavItem href="/shacks">About</NavItem>
+        <NavItem href="/shacks">Sign in</NavItem>
+        <NavItem className="hidden md:flex">
           <DarkMode />
         </NavItem>
       </ul>
