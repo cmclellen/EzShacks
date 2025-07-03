@@ -15,7 +15,9 @@ export default function Home() {
         className="object-cover object-top"
       />
       <div className="relative flex flex-col gap-5 items-center z-10 ">
-        <h1 className="text-6xl">A getaway to be remembered</h1>
+        <h1 className="text-3xl md:text-6xl text-center">
+          A getaway to be remembered
+        </h1>
         <div>
           <Link
             href="/shacks"
