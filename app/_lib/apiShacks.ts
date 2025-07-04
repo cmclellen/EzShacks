@@ -8,7 +8,7 @@ export async function getShacks() {
     console.error(error);
     throw new Error("Cabins could not be loaded.");
   }
-  //await new Promise((resolve) => setTimeout(resolve, 6500));
+  // await new Promise((resolve) => setTimeout(resolve, 15000));
   return cabins;
 }
 
