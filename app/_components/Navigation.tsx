@@ -75,7 +75,7 @@ function Navigation({ children }: NavigationProps) {
         )}
       >
         <NavItem href="/shacks">Shacks</NavItem>
-        <NavItem href="/shacks">About</NavItem>
+        <NavItem href="/about">About</NavItem>
         <NavItem href="/shacks">Sign in</NavItem>
         <NavItem className="hidden md:flex">
           <DarkMode />

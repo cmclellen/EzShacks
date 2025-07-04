@@ -1,5 +1,6 @@
 import { getShacks } from "@/app/_lib/apiShacks";
 import ShackList from "../_components/ShackList";
+import ShackFilter from "../_components/ShackFilter";
 
 export const revalidate = 0;
 
@@ -20,6 +21,9 @@ async function Page(_props: PageProps) {
         escape. A peaceful, quiet retreat—your perfect getaway. Welcome!
       </p>
 
+      <div className="flex justify-end">
+        <ShackFilter />
+      </div>
       <ShackList shacks={shacks}></ShackList>
     </div>
   );
