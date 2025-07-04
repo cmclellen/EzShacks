@@ -1,15 +1,19 @@
-import { getShacks } from "@/app/_lib/apiShacks";
-import ShackList from "../_components/ShackList";
+import { SearchParams } from "next/dist/server/request/search-params";
+import { Suspense } from "react";
 import ShackFilter from "../_components/ShackFilter";
+import ShackList from "../_components/ShackList";
+import Spinner from "../_components/Spinner";
+import { FilterType } from "../_lib/types";
 
 export const revalidate = 0;
 
 type PageProps = {
-  //children: React.ReactNode;
+  searchParams: SearchParams;
 };
 
-async function Page(_props: PageProps) {
-  const shacks = await getShacks();
+async function Page({ searchParams }: PageProps) {
+  const filter: FilterType = (searchParams?.capacity ?? "all") as FilterType;
+
   return (
     <div className="flex flex-col gap-5">
       <h1 className="text-4xl font-medium">Our shacks</h1>
@@ -24,7 +28,9 @@ async function Page(_props: PageProps) {
       <div className="flex justify-end">
         <ShackFilter />
       </div>
-      <ShackList shacks={shacks}></ShackList>
+      <Suspense fallback={<Spinner />} key={filter}>
+        <ShackList filter={filter}></ShackList>
+      </Suspense>
     </div>
   );
 }

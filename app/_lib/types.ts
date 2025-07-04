@@ -1,4 +1,4 @@
-type Shack = {
+export type Shack = {
   id: number;
   created_at: Date;
   name: string;
@@ -8,3 +8,5 @@ type Shack = {
   description: string;
   image: string;
 };
+
+export type FilterType = "all" | "small" | "medium" | "large";

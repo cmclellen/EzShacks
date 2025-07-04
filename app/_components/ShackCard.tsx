@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { formatCurrency } from "../_utils/helpers";
 import { HiUsers } from "react-icons/hi";
+import { Shack } from "../_lib/types";
 
 export const revalidate = 0;
 

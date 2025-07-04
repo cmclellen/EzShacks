@@ -2,8 +2,7 @@
 
 import clsx from "clsx";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-
-type FilterType = "all" | "small" | "medium" | "large";
+import { FilterType } from "../_lib/types";
 
 type FilterButtonProps = {
   children: React.ReactNode;
