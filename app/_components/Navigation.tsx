@@ -1,20 +1,10 @@
 "use client";
 
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from "@headlessui/react";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRef, useState } from "react";
-import { HiBars3, HiBell, HiXMark } from "react-icons/hi2";
-import useClickOutside from "../_hooks/useClickOutside";
+import { useState } from "react";
+import useClickAnywhere from "../_hooks/useClickAnywhere";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {
   ssr: false,
@@ -58,8 +48,7 @@ type NavigationProps = {
 
 function Navigation({ children }: NavigationProps) {
   const [open, setOpen] = useState(false);
-  const navigation = useRef(null);
-  useClickOutside(navigation, () => {
+  useClickAnywhere(() => {
     setOpen(false);
   });
 
@@ -77,7 +66,6 @@ function Navigation({ children }: NavigationProps) {
       </button>
 
       <ul
-        ref={navigation}
         className={clsx(
           "flex p-0 rounded-md md:flex-row items-center text-sm font-semibold bg-surface absolute left-0 right-0 top-16 shadow-2xl transition-all duration-200 md:static md:top-0 md:shadow-none md:flex md:gap-4 md:bg-transparent",
           {
