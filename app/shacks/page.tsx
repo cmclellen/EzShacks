@@ -1,6 +1,5 @@
-import ShackItem from "../_components/ShackCard";
+import { getShacks } from "@/app/_lib/apiShacks";
 import ShackList from "../_components/ShackList";
-import { getShacks } from "../_lib/apiShacks";
 
 export const revalidate = 0;
 
