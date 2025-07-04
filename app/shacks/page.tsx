@@ -1,8 +1,15 @@
+import ShackItem from "../_components/ShackCard";
+import ShackList from "../_components/ShackList";
+import { getShacks } from "../_lib/apiShacks";
+
+export const revalidate = 0;
+
 type PageProps = {
   //children: React.ReactNode;
 };
 
-function Page(_props: PageProps) {
+async function Page(_props: PageProps) {
+  const shacks = await getShacks();
   return (
     <div className="flex flex-col gap-5">
       <h1 className="text-4xl font-medium">Our shacks</h1>
@@ -13,6 +20,8 @@ function Page(_props: PageProps) {
         blanket of stars. Experience the beauty of nature in your own cozy
         escape. A peaceful, quiet retreat—your perfect getaway. Welcome!
       </p>
+
+      <ShackList shacks={shacks}></ShackList>
     </div>
   );
 }

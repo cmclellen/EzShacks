@@ -23,13 +23,13 @@ function NavItem({ children, className, href }: NavItemProps) {
     <li
       className={clsx(
         className,
-        "rounded-md cursor-pointer z-10 w-full md:w-auto text-center grid"
+        "cursor-pointer z-10 w-full md:w-auto text-center grid"
       )}
     >
       {href ? (
         <Link
           className={clsx(
-            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary"
+            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary md:rounded-sm"
           )}
           href={href}
         >
