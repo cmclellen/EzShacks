@@ -61,18 +61,19 @@ async function Page(_props: PageProps) {
 
         <div className="space-y-8">
           <p>
-            Since 1962, The Wild Oasis has been a cherished family-run retreat.
-            Started by our grandparents, this haven has been nurtured with love
-            and care, passing down through our family as a testament to our
-            dedication to creating a warm, welcoming environment.
+            The Wild Oasis has been a beloved family retreat since 1962. Founded
+            by our grandparents, this special place has been lovingly cared for
+            and passed down through generations, reflecting our commitment to
+            providing a warm and welcoming atmosphere for every guest.
           </p>
           <p>
-            Over the years, we&apos;ve maintained the essence of The Wild Oasis,
-            blending the timeless beauty of the mountains with the personal
-            touch only a family business can offer. Here, you&apos;re not just a
-            guest; you&apos;re part of our extended family. So join us at The
-            Wild Oasis soon, where tradition meets tranquility, and every visit
-            is like coming home.
+            Through the years, we&apos;ve preserved the spirit of The Wild
+            Oasis—combining the enduring beauty of the mountains with the warmth
+            and care that only a family-run retreat can provide. Here,
+            you&apos;re more than a guest; you&apos;re welcomed as part of our
+            family. Visit The Wild Oasis and experience a place where tradition
+            and tranquility come together, making every stay feel like coming
+            home.
           </p>
 
           <div>
