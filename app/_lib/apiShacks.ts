@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
-import { supabase, supabaseKey, supabaseUrl } from "./supabase";
+import { supabase } from "./supabase";
 
 export async function getShacks() {
-  console.log(supabaseKey, supabaseUrl);
   const { data: cabins, error } = await supabase.from("cabins").select("*");
   if (error) {
     console.error(error);
