@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
 import useClickAnywhere from "../_hooks/useClickAnywhere";
+import { usePathname } from "next/navigation";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {
   ssr: false,
@@ -19,6 +20,9 @@ type NavItemProps = {
 };
 
 function NavItem({ children, className, href }: NavItemProps) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
   return (
     <li
       className={clsx(
@@ -29,7 +33,10 @@ function NavItem({ children, className, href }: NavItemProps) {
       {href ? (
         <Link
           className={clsx(
-            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary md:rounded-sm"
+            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary md:rounded-sm",
+            {
+              "underline decoration-2 underline-offset-4": isActive,
+            }
           )}
           href={href}
         >
@@ -76,7 +83,7 @@ function Navigation({ children }: NavigationProps) {
       >
         <NavItem href="/shacks">Shacks</NavItem>
         <NavItem href="/about">About</NavItem>
-        <NavItem href="/shacks">Sign in</NavItem>
+        <NavItem href="/login">Sign in</NavItem>
         <NavItem className="hidden md:flex">
           <DarkMode />
         </NavItem>
