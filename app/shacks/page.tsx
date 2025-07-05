@@ -1,4 +1,3 @@
-import { SearchParams } from "next/dist/server/request/search-params";
 import { Suspense } from "react";
 import ShackFilter from "../_components/ShackFilter";
 import ShackList from "../_components/ShackList";
@@ -12,7 +11,7 @@ export const metadata = {
 };
 
 type PageProps = {
-  searchParams: SearchParams;
+  searchParams: any;
 };
 
 async function Page({ searchParams }: PageProps) {

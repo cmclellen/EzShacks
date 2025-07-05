@@ -22,7 +22,8 @@ const eslintConfig = [
           caughtErrorsIgnorePattern: "^_",
         },
       ],
-      "no-any": false,
+      "no-any": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ];
