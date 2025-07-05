@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
+import { Booking } from "./types";
 
 export async function getShacks() {
   const { data: cabins, error } = await supabase.from("cabins").select("*");
@@ -24,4 +25,21 @@ export async function getShack(id: number): Promise<any> {
   }
 
   return cabin;
+}
+
+export async function getBookings(guestId: number): Promise<Booking[]> {
+  const { data: bookings, error } = await supabase
+    .from("bookings")
+    .select(
+      "id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)"
+    )
+    .eq("guestId", guestId)
+    .order("startDate");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Bookings could not get loaded");
+  }
+
+  return bookings as unknown as Booking[];
 }

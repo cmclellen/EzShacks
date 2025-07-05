@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthResult, Session, User } from "next-auth";
 import Google from "next-auth/providers/google";
 
 const authConfig = {
@@ -31,7 +31,7 @@ const authConfig = {
     async session({ session, _user }: any) {
       // const guest = await getGuest(session.user.email);
       // session.user.guestId = guest.id;
-      session.user.guestId = "blahblah";
+      session.user.guestId = "67";
       return session;
     },
   },
