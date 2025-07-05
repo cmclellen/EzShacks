@@ -83,7 +83,7 @@ function Navigation({ children }: NavigationProps) {
       >
         <NavItem href="/shacks">Shacks</NavItem>
         <NavItem href="/about">About</NavItem>
-        <NavItem href="/login">Sign in</NavItem>
+        <NavItem href="/account">Sign in</NavItem>
         <NavItem className="hidden md:flex">
           <DarkMode />
         </NavItem>
