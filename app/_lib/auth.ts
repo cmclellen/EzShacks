@@ -9,10 +9,10 @@ const authConfig = {
     }),
   ],
   callbacks: {
-    authorized({ auth, request }: any) {
+    authorized({ auth, _request }: any) {
       return !!auth?.user;
     },
-    async signIn({ user, account, profile }: any) {
+    async signIn({ _user, account, profile }: any) {
       try {
         // const existingGuest = await getGuest(user.email);
 
@@ -28,7 +28,7 @@ const authConfig = {
         return false;
       }
     },
-    async session({ session, user }: any) {
+    async session({ session, _user }: any) {
       // const guest = await getGuest(session.user.email);
       // session.user.guestId = guest.id;
       session.user.guestId = "blahblah";

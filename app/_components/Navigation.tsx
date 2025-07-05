@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import useClickAnywhere from "../_hooks/useClickAnywhere";
 import { usePathname } from "next/navigation";
+import { signOutAction } from "../_lib/actions";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {
   ssr: false,
@@ -84,6 +85,7 @@ function Navigation({ children }: NavigationProps) {
         <NavItem href="/shacks">Shacks</NavItem>
         <NavItem href="/about">About</NavItem>
         <NavItem href="/account">Sign in</NavItem>
+        <button onClick={() => signOutAction()}>Sign out</button>
         <NavItem className="hidden md:flex">
           <DarkMode />
         </NavItem>
