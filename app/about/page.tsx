@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getShacks } from "../_lib/apiShacks";
+import Link from "next/link";
 
 export const revalidate = 0;
 
@@ -83,12 +84,12 @@ async function Page(_props: PageProps) {
           </p>
 
           <div>
-            <a
+            <Link
               href="/shacks"
               className="inline-block mt-4 bg-accent px-8 py-5 text-primary text-lg font-semibold hover:bg-primary hover:text-on-primary transition-all"
             >
               Explore our luxury shacks
-            </a>
+            </Link>
           </div>
         </div>
       </div>

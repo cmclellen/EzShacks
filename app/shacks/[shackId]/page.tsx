@@ -1,7 +1,7 @@
 import Reservation from "@/app/_components/Reservation";
 import ShackDefault from "@/app/_components/ShackDefault";
 import Spinner from "@/app/_components/Spinner";
-import { getShack, getShacks } from "@/app/_lib/apiShacks";
+import { getShack } from "@/app/_lib/apiShacks";
 import { Params } from "next/dist/server/request/params";
 import { Suspense } from "react";
 
