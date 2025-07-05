@@ -2,6 +2,7 @@ import Image from "next/image";
 import { formatCurrency } from "../_utils/helpers";
 import { HiUsers } from "react-icons/hi";
 import { Shack } from "../_lib/types";
+import Link from "next/link";
 
 export const revalidate = 0;
 
@@ -10,7 +11,7 @@ type ShackCardProps = {
 };
 
 function ShackCard({ shack }: ShackCardProps) {
-  const { discount } = shack;
+  const { discount, id } = shack;
   return (
     <div className="outline outline-primary flex gap-2">
       <div className="flex-1 relative">
@@ -53,9 +54,12 @@ function ShackCard({ shack }: ShackCardProps) {
         </div>
 
         <div className="flex items-center justify-end">
-          <button className="outline px-5 py-3 hover:bg-accent hover:text-on-accent hover:outline-none hover: border:none">
+          <Link
+            href={`/shacks/${id}`}
+            className="outline px-5 py-3 hover:bg-accent hover:text-on-accent hover:outline-none hover: border:none"
+          >
             Details & reservation &rarr;
-          </button>
+          </Link>
         </div>
       </div>
     </div>

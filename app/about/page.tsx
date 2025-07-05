@@ -1,6 +1,12 @@
 import Image from "next/image";
 import { getShacks } from "../_lib/apiShacks";
 
+export const revalidate = 0;
+
+export const metadata = {
+  title: "About",
+};
+
 type PageProps = {
   //children: React.ReactNode;
 };

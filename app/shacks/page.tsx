@@ -7,6 +7,10 @@ import { FilterType } from "../_lib/types";
 
 export const revalidate = 0;
 
+export const metadata = {
+  title: "Shacks",
+};
+
 type PageProps = {
   searchParams: SearchParams;
 };
