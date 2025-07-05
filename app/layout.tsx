@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <Header />
           <div className="flex-1 grid md:px-8 py-12">
-            <main className="max-w-7xl mx-auto">{children}</main>
+            <main className="max-w-7xl mx-auto w-full">{children}</main>
           </div>
           <Footer />
         </body>

@@ -1,8 +1,23 @@
-type PageProps = {
-  //children: React.ReactNode;
+import { SearchParams } from "next/dist/server/request/search-params";
+import { Suspense } from "react";
+import ShackFilter from "../_components/ShackFilter";
+import ShackList from "../_components/ShackList";
+import Spinner from "../_components/Spinner";
+import { FilterType } from "../_lib/types";
+
+export const revalidate = 0;
+
+export const metadata = {
+  title: "Shacks",
 };
 
-function Page(_props: PageProps) {
+type PageProps = {
+  searchParams: SearchParams;
+};
+
+async function Page({ searchParams }: PageProps) {
+  const filter: FilterType = (searchParams?.capacity ?? "all") as FilterType;
+
   return (
     <div className="flex flex-col gap-5">
       <h1 className="text-4xl font-medium">Our shacks</h1>
@@ -13,6 +28,13 @@ function Page(_props: PageProps) {
         blanket of stars. Experience the beauty of nature in your own cozy
         escape. A peaceful, quiet retreat—your perfect getaway. Welcome!
       </p>
+
+      <div className="flex justify-end">
+        <ShackFilter />
+      </div>
+      <Suspense fallback={<Spinner />} key={filter}>
+        <ShackList filter={filter}></ShackList>
+      </Suspense>
     </div>
   );
 }

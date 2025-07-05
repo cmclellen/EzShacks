@@ -22,6 +22,7 @@ const eslintConfig = [
           caughtErrorsIgnorePattern: "^_",
         },
       ],
+      "no-any": false,
     },
   },
 ];

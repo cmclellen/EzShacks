@@ -23,13 +23,13 @@ function NavItem({ children, className, href }: NavItemProps) {
     <li
       className={clsx(
         className,
-        "rounded-md cursor-pointer z-10 w-full md:w-auto text-center grid"
+        "cursor-pointer z-10 w-full md:w-auto text-center grid"
       )}
     >
       {href ? (
         <Link
           className={clsx(
-            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary"
+            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary md:rounded-sm"
           )}
           href={href}
         >
@@ -75,7 +75,7 @@ function Navigation({ children }: NavigationProps) {
         )}
       >
         <NavItem href="/shacks">Shacks</NavItem>
-        <NavItem href="/shacks">About</NavItem>
+        <NavItem href="/about">About</NavItem>
         <NavItem href="/shacks">Sign in</NavItem>
         <NavItem className="hidden md:flex">
           <DarkMode />
