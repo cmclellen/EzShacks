@@ -6,7 +6,7 @@ import { Params } from "next/dist/server/request/params";
 import { Suspense } from "react";
 
 type PageProps = {
-  params: Params;
+  params: Promise<Params>;
 };
 
 async function Page({ params }: PageProps) {
