@@ -2,11 +2,10 @@
 
 import clsx from "clsx";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useState } from "react";
 import useClickAnywhere from "../_hooks/useClickAnywhere";
-import { usePathname } from "next/navigation";
 import { signOutAction } from "../_lib/actions";
+import NavItem from "./NavItem";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {
   ssr: false,
@@ -14,47 +13,12 @@ const DarkMode = dynamic(() => import("./DarkMode"), {
 
 export const revalidate = 0;
 
-type NavItemProps = {
-  readonly children: React.ReactNode;
-  readonly className?: string;
-  readonly href?: string;
-};
-
-function NavItem({ children, className, href }: NavItemProps) {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-
-  return (
-    <li
-      className={clsx(
-        className,
-        "cursor-pointer z-10 w-full md:w-auto text-center grid"
-      )}
-    >
-      {href ? (
-        <Link
-          className={clsx(
-            "py-3 md:py-1 md:px-3 hover:bg-primary hover:text-on-primary md:rounded-sm",
-            {
-              "underline decoration-2 underline-offset-4": isActive,
-            }
-          )}
-          href={href}
-        >
-          {children}
-        </Link>
-      ) : (
-        children
-      )}
-    </li>
-  );
-}
-
 type NavigationProps = {
   readonly children?: React.ReactNode;
+  readonly account: React.ReactNode;
 };
 
-function Navigation({ children }: NavigationProps) {
+function Navigation({ children, account }: NavigationProps) {
   const [open, setOpen] = useState(false);
   useClickAnywhere(() => {
     setOpen(false);
@@ -84,7 +48,13 @@ function Navigation({ children }: NavigationProps) {
       >
         <NavItem href="/shacks">Shacks</NavItem>
         <NavItem href="/about">About</NavItem>
-        <NavItem href="/account">Sign in</NavItem>
+        {account}
+        {/* {session?.user?.image ? ( */}
+
+        {/* ) : (
+          <NavItem href="/account">Sign in</NavItem>
+        )} */}
+
         <button onClick={() => signOutAction()}>Sign out</button>
         <NavItem className="hidden md:flex">
           <DarkMode />
