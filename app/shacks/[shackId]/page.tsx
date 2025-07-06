@@ -1,4 +1,6 @@
+import DateSelector from "@/app/_components/DateSelector";
 import Reservation from "@/app/_components/Reservation";
+import ReservationForm from "@/app/_components/ReservationForm";
 import ShackDefault from "@/app/_components/ShackDefault";
 import Spinner from "@/app/_components/Spinner";
 import { getShack } from "@/app/_lib/apiShacks";
@@ -23,9 +25,14 @@ async function Page({ params }: PageProps) {
           Reserve {shack.name} today. Pay on arrival.
         </h2>
 
-        <Suspense fallback={<Spinner />}>
-          <Reservation shack={shack} />
-        </Suspense>
+        <div className="flex items-center">
+          <div className="flex-1">
+            <DateSelector />
+          </div>
+          <div className="flex-1">
+            <ReservationForm maxCapacity={shack.maxCapacity} />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
-import { Booking } from "./types";
+import { Booking, Shack } from "./types";
 
 export async function getShacks() {
   const { data: cabins, error } = await supabase.from("cabins").select("*");
@@ -12,7 +12,7 @@ export async function getShacks() {
   return cabins;
 }
 
-export async function getShack(id: number): Promise<any> {
+export async function getShack(id: number): Promise<Shack> {
   const { data: cabin, error } = await supabase
     .from("cabins")
     .select("*")
