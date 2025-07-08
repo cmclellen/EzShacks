@@ -1,11 +1,8 @@
 import DateSelector from "@/app/_components/DateSelector";
-import Reservation from "@/app/_components/Reservation";
 import ReservationForm from "@/app/_components/ReservationForm";
 import ShackDefault from "@/app/_components/ShackDefault";
-import Spinner from "@/app/_components/Spinner";
-import { getShack } from "@/app/_lib/apiShacks";
+import { getBookedDatesByShackId, getShack } from "@/app/_lib/apiShacks";
 import { Params } from "next/dist/server/request/params";
-import { Suspense } from "react";
 
 type PageProps = {
   params: Promise<Params>;
@@ -13,6 +10,9 @@ type PageProps = {
 
 async function Page({ params }: PageProps) {
   const { shackId } = await params;
+  const [bookedDates] = await Promise.all([
+    getBookedDatesByShackId(Number(shackId)),
+  ]);
 
   const shack = await getShack(Number(shackId));
 
@@ -27,10 +27,10 @@ async function Page({ params }: PageProps) {
 
         <div className="flex items-center">
           <div className="flex-1">
-            <DateSelector />
+            <DateSelector bookedDates={bookedDates} />
           </div>
           <div className="flex-1">
-            <ReservationForm maxCapacity={shack.maxCapacity} />
+            <ReservationForm shack={shack} />
           </div>
         </div>
       </div>

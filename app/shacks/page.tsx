@@ -15,7 +15,8 @@ type PageProps = {
 };
 
 async function Page({ searchParams }: PageProps) {
-  const filter: FilterType = (searchParams?.capacity ?? "all") as FilterType;
+  const { capacity } = await searchParams;
+  const filter: FilterType = (capacity ?? "all") as FilterType;
 
   return (
     <div className="flex flex-col gap-5">
