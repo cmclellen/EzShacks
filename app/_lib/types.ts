@@ -18,6 +18,7 @@ export type Booking = {
   endDate: string;
   numNights: number;
   numGuests: number;
+  observations: string;
   // cabinPrice: number;
   // extrasPrice: number;
   totalPrice: number;

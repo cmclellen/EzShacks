@@ -1,7 +1,7 @@
+import { eachDayOfInterval } from "date-fns";
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
 import { Booking, Shack } from "./types";
-import { eachDayOfInterval } from "date-fns";
 
 export async function getShacks() {
   const { data: cabins, error } = await supabase.from("cabins").select("*");
@@ -11,6 +11,21 @@ export async function getShacks() {
   }
   // await new Promise((resolve) => setTimeout(resolve, 15000));
   return cabins;
+}
+
+export async function getBooking(id: number): Promise<Booking> {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not get loaded");
+  }
+
+  return data;
 }
 
 export async function getBookedDatesByShackId(shackId: number) {
