@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { FaCalendarDays, FaUser } from "react-icons/fa6";
+import SignOutButton from "./SignOutButton";
 
 type SideNavLinkItem = {
   name: string;
@@ -57,6 +58,9 @@ function SideNavigation(_props: SideNavigationProps) {
           {navLinks.map((nl) => (
             <SideNavigationItem key={nl.name} item={nl} />
           ))}
+          <li>
+            <SignOutButton />
+          </li>
         </ul>
       </nav>
     </aside>

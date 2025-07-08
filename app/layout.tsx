@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import { DarkModeProvider } from "./_contexts/DarkModeContext";
+import { ReservationProvider } from "./_contexts/ReservationContext";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -31,7 +32,9 @@ export default function RootLayout({
         >
           <Header />
           <div className="flex-1 grid md:px-8 py-12">
-            <main className="max-w-7xl mx-auto w-full">{children}</main>
+            <main className="max-w-7xl mx-auto w-full">
+              <ReservationProvider>{children}</ReservationProvider>
+            </main>
           </div>
           <Footer />
         </body>

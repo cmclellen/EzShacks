@@ -49,13 +49,6 @@ function Navigation({ children, account }: NavigationProps) {
         <NavItem href="/shacks">Shacks</NavItem>
         <NavItem href="/about">About</NavItem>
         {account}
-        {/* {session?.user?.image ? ( */}
-
-        {/* ) : (
-          <NavItem href="/account">Sign in</NavItem>
-        )} */}
-
-        <button onClick={() => signOutAction()}>Sign out</button>
         <NavItem className="hidden md:flex">
           <DarkMode />
         </NavItem>
