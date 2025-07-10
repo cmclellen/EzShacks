@@ -1,7 +1,11 @@
-import Link from "next/link";
-import { Booking } from "../_lib/types";
+"use client";
+
 import { format, formatDistance, isPast, isToday, parseISO } from "date-fns";
+import Link from "next/link";
+import { useOptimistic } from "react";
 import { FaPencil } from "react-icons/fa6";
+import { deleteBooking } from "../_lib/actions";
+import { Booking } from "../_lib/types";
 import DeleteReservation from "./DeleteReservation";
 
 export const formatDistanceFromNow = (dateStr: string) =>
@@ -11,9 +15,10 @@ export const formatDistanceFromNow = (dateStr: string) =>
 
 type ReservationCardProps = {
   booking: Booking;
+  onDelete: (bookingId: number) => void;
 };
 
-function ReservationCard({ booking }: ReservationCardProps) {
+function ReservationCard({ booking, onDelete }: ReservationCardProps) {
   const {
     id,
     numNights,
@@ -25,7 +30,6 @@ function ReservationCard({ booking }: ReservationCardProps) {
     cabins: { name },
   } = booking;
 
-  function onDelete() {}
   return (
     <div className="flex border border-primary">
       <div className="flex-grow px-6 py-3 flex flex-col">
@@ -87,10 +91,26 @@ type ReservationListProps = {
 };
 
 function ReservationList({ bookings }: ReservationListProps) {
+  const [optimisticBookings, optimisticDelete] = useOptimistic(
+    bookings,
+    (curBookings, bookingId) => {
+      return curBookings.filter((booking) => booking.id !== bookingId);
+    }
+  );
+
+  async function handleDelete(bookingId: number) {
+    optimisticDelete(bookingId);
+    await deleteBooking(bookingId);
+  }
+
   return (
     <ul className="space-y-6">
-      {bookings.map((booking) => (
-        <ReservationCard key={booking.id} booking={booking} />
+      {optimisticBookings.map((booking) => (
+        <ReservationCard
+          key={booking.id}
+          booking={booking}
+          onDelete={handleDelete}
+        />
       ))}
     </ul>
   );
