@@ -20,7 +20,7 @@ type DateSelectorProps = {
 };
 
 function DateSelector({ bookedDates }: DateSelectorProps) {
-  const { range, setRange, resetRange } = useReservation();
+  const { range, setRange } = useReservation();
 
   const displayRange: any = isAlreadyBooked(range, bookedDates) ? {} : range;
 

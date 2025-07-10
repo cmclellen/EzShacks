@@ -1,7 +1,6 @@
 import ReservationList from "@/app/_components/ReservationList";
 import { getBookings } from "@/app/_lib/apiShacks";
 import { auth } from "@/app/_lib/auth";
-import Link from "next/link";
 
 type PageProps = {
   //children: React.ReactNode;

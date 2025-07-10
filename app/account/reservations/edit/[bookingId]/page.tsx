@@ -1,10 +1,9 @@
 import SubmitButton from "@/app/_components/SubmitButton";
 import { updateBooking } from "@/app/_lib/actions";
 import { getBooking, getShack } from "@/app/_lib/apiShacks";
-import { Params } from "next/dist/server/request/params";
 
 type PageProps = {
-  params: Params;
+  params: Promise<{ bookingId: number }>;
 };
 
 async function Page({ params }: PageProps) {

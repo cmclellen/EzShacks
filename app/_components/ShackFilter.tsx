@@ -14,7 +14,7 @@ function FilterButton({ filterType, children }: FilterButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const activeFilter = searchParams.get("capacity");
+  const activeFilter = searchParams.get("capacity") ?? "all";
   const isActive = filterType === activeFilter;
 
   function handleApplyFilter() {

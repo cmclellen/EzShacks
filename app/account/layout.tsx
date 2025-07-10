@@ -6,7 +6,7 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex gap-5">
+    <div className="grid grid-cols-[16rem_1fr] h-full gap-12">
       <SideNavigation />
       <div>{children}</div>
     </div>

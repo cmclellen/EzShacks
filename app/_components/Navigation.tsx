@@ -4,7 +4,6 @@ import clsx from "clsx";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import useClickAnywhere from "../_hooks/useClickAnywhere";
-import { signOutAction } from "../_lib/actions";
 import NavItem from "./NavItem";
 
 const DarkMode = dynamic(() => import("./DarkMode"), {

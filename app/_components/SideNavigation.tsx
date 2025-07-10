@@ -52,13 +52,13 @@ type SideNavigationProps = {
 
 function SideNavigation(_props: SideNavigationProps) {
   return (
-    <aside>
-      <nav>
-        <ul className="space-y-5">
+    <aside className="grid">
+      <nav className="border-r">
+        <ul className="flex flex-col gap-2 h-full text-lg">
           {navLinks.map((nl) => (
             <SideNavigationItem key={nl.name} item={nl} />
           ))}
-          <li>
+          <li className="mt-auto">
             <SignOutButton />
           </li>
         </ul>
