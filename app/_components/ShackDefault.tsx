@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Shack } from "../_lib/types";
 import { HiUsers } from "react-icons/hi";
+import { FaEyeSlash, FaMapPin } from "react-icons/fa6";
 
 type ShackDefaultProps = {
   shack: Shack;
@@ -31,12 +32,14 @@ function ShackDefault({ shack }: ShackDefaultProps) {
             </span>
           </li>
           <li className="flex gap-3 items-center">
+            <FaMapPin />
             <span className="text-lg">
               Located in the heart of the{" "}
               <span className="font-bold">Dolomites</span> (Italy)
             </span>
           </li>
           <li className="flex gap-3 items-center">
+            <FaEyeSlash />
             <span className="text-lg">
               Privacy <span className="font-bold">100%</span> guaranteed
             </span>

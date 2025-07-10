@@ -1,7 +1,30 @@
 import { eachDayOfInterval } from "date-fns";
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
-import { Booking, Shack } from "./types";
+import { Booking, Guest, Shack } from "./types";
+
+export async function getCountries() {
+  try {
+    const res = await fetch(
+      "https://restcountries.com/v2/all?fields=name,flag"
+    );
+    const countries = await res.json();
+    return countries;
+  } catch {
+    throw new Error("Could not fetch countries");
+  }
+}
+
+export async function getGuest(email: string): Promise<Guest> {
+  const { data } = await supabase
+    .from("guests")
+    .select("*")
+    .eq("email", email)
+    .single();
+
+  // No error here! We handle the possibility of no guest in the sign in callback
+  return data;
+}
 
 export async function getShacks() {
   const { data: cabins, error } = await supabase.from("cabins").select("*");
@@ -11,6 +34,17 @@ export async function getShacks() {
   }
   // await new Promise((resolve) => setTimeout(resolve, 15000));
   return cabins;
+}
+
+export async function createGuest(newGuest: Partial<Guest>) {
+  const { data, error } = await supabase.from("guests").insert([newGuest]);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Guest could not be created");
+  }
+
+  return data;
 }
 
 export async function getBooking(id: number): Promise<Booking> {

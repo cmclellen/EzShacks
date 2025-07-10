@@ -24,8 +24,8 @@ function DateSelector({ bookedDates }: DateSelectorProps) {
 
   const displayRange: any = isAlreadyBooked(range, bookedDates) ? {} : range;
 
-  const minBookingLength = 1,
-    maxBookingLength = 7;
+  const minBookingLength = 3,
+    maxBookingLength = 90;
 
   function handleSetRange(d: any) {
     setRange(d);
@@ -35,13 +35,12 @@ function DateSelector({ bookedDates }: DateSelectorProps) {
 
   return (
     <div className="flex flex-col justify-between">
-      <pre>{JSON.stringify(displayRange)}</pre>
       <DayPicker
         className="pt-12 place-self-center"
         mode="range"
         onSelect={handleSetRange}
         selected={displayRange}
-        min={minBookingLength}
+        min={minBookingLength + 1}
         max={maxBookingLength}
         startMonth={currDate}
         hidden={{ before: currDate }}
@@ -53,6 +52,7 @@ function DateSelector({ bookedDates }: DateSelectorProps) {
           bookedDates.some((date) => isSameDay(date, curDate))
         }
       />
+      <div>here</div>
     </div>
   );
 }
