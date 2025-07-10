@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthResult, Session, User } from "next-auth";
+import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
 const authConfig = {
