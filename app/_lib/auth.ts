@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import { createGuest, getGuest } from "./apiShacks";
 
 const authConfig = {
   providers: [
@@ -12,16 +13,12 @@ const authConfig = {
     authorized({ auth, _request }: any) {
       return !!auth?.user;
     },
-    async signIn({ _user, account, profile }: any) {
+    async signIn({ user, account, profile }: any) {
       try {
-        // const existingGuest = await getGuest(user.email);
+        const existingGuest = await getGuest(user.email);
 
-        // if (!existingGuest)
-        //   await createGuest({ email: user.email, fullName: user.name });
-
-        if (account.provider === "google") {
-          return profile.email_verified && profile.email.endsWith("@gmail.com");
-        }
+        if (!existingGuest)
+          await createGuest({ email: user.email, fullName: user.name });
 
         return true;
       } catch {
@@ -29,9 +26,8 @@ const authConfig = {
       }
     },
     async session({ session, _user }: any) {
-      // const guest = await getGuest(session.user.email);
-      // session.user.guestId = guest.id;
-      session.user.guestId = "67";
+      const guest = await getGuest(session.user.email);
+      session.user.guestId = guest.id;
       return session;
     },
   },

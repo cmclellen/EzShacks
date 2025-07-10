@@ -25,13 +25,9 @@ async function Page({ params }: PageProps) {
           Reserve {shack.name} today. Pay on arrival.
         </h2>
 
-        <div className="flex items-center">
-          <div className="flex-1">
-            <DateSelector bookedDates={bookedDates} />
-          </div>
-          <div className="flex-1">
-            <ReservationForm shack={shack} />
-          </div>
+        <div className="grid grid-cols-2 border min-h-[400px]">
+          <DateSelector bookedDates={bookedDates} />
+          <ReservationForm shack={shack} />
         </div>
       </div>
     </div>

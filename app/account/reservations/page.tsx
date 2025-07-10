@@ -1,6 +1,7 @@
 import ReservationList from "@/app/_components/ReservationList";
 import { getBookings } from "@/app/_lib/apiShacks";
 import { auth } from "@/app/_lib/auth";
+import Link from "next/link";
 
 type PageProps = {
   //children: React.ReactNode;
@@ -15,7 +16,12 @@ async function Page(_props: PageProps) {
       <h2 className="font-semibold text-2xl">Your reservations</h2>
 
       {bookings.length === 0 ? (
-        <p>You have no reservations yet. Check out our luxury shacks &rarr;</p>
+        <p>
+          You have no reservations yet. Check out our{" "}
+          <Link href="/shacks" className="underline text-accent">
+            luxury shacks &rarr;
+          </Link>
+        </p>
       ) : (
         <ReservationList bookings={bookings} />
       )}
