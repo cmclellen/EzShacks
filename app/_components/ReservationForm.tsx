@@ -6,6 +6,7 @@ import { createBooking } from "../_lib/actions";
 import { Shack } from "../_lib/types";
 import SubmitButton from "./SubmitButton";
 import { User } from "next-auth";
+import Image from "next/image";
 
 type ReservationFormProps = {
   shack: Shack;
@@ -42,13 +43,16 @@ function ReservationForm({ shack, user }: ReservationFormProps) {
       <div className="bg-primary text-on-primary px-16 py-2 font-semibold flex items-center justify-between">
         <p>Logged in as</p>
         <div className="flex gap-4 items-center">
-          <img
-            // Important to display google profile images
-            referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
-            src={user.image}
-            alt={user.name}
-          />
+          <div className="relative w-8 h-8">
+            <Image
+              // Important to display google profile images
+              referrerPolicy="no-referrer"
+              className="rounded-full object-cover"
+              src={user.image as string}
+              alt={user.name as string}
+              fill
+            />
+          </div>
           <p>{user.name}</p>
         </div>
       </div>

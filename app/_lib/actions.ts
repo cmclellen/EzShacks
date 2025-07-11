@@ -18,7 +18,7 @@ export async function updateGuest(formData: any) {
 
   const updateData = { nationality, countryFlag, nationalID };
 
-  const { data, error } = await supabase
+  const { data: _data, error } = await supabase
     .from("guests")
     .update(updateData)
     .eq("id", session.user.guestId);
