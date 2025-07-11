@@ -5,12 +5,14 @@ import { useReservation } from "../_contexts/ReservationContext";
 import { createBooking } from "../_lib/actions";
 import { Shack } from "../_lib/types";
 import SubmitButton from "./SubmitButton";
+import { User } from "next-auth";
 
 type ReservationFormProps = {
   shack: Shack;
+  user: User;
 };
 
-function ReservationForm({ shack }: ReservationFormProps) {
+function ReservationForm({ shack, user }: ReservationFormProps) {
   const { range, resetRange } = useReservation();
   const { maxCapacity, regularPrice, discount, id } = shack;
 
@@ -37,8 +39,18 @@ function ReservationForm({ shack }: ReservationFormProps) {
 
   return (
     <div className="outline">
-      <div className="bg-primary text-on-primary px-16 py-2 font-semibold">
+      <div className="bg-primary text-on-primary px-16 py-2 font-semibold flex items-center justify-between">
         <p>Logged in as</p>
+        <div className="flex gap-4 items-center">
+          <img
+            // Important to display google profile images
+            referrerPolicy="no-referrer"
+            className="h-8 rounded-full"
+            src={user.image}
+            alt={user.name}
+          />
+          <p>{user.name}</p>
+        </div>
       </div>
 
       <form
