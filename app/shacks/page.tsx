@@ -3,6 +3,7 @@ import ShackFilter from "../_components/ShackFilter";
 import ShackList from "../_components/ShackList";
 import Spinner from "../_components/Spinner";
 import { FilterType } from "../_lib/types";
+import ReservationReminder from "../_components/ReservationReminder";
 
 export const revalidate = 0;
 
@@ -34,6 +35,7 @@ async function Page({ searchParams }: PageProps) {
       </div>
       <Suspense fallback={<Spinner />} key={filter}>
         <ShackList filter={filter}></ShackList>
+        <ReservationReminder />
       </Suspense>
     </div>
   );

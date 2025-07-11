@@ -26,7 +26,7 @@ async function Page({ params }: PageProps) {
         </h2>
 
         <div className="grid grid-cols-2 border min-h-[400px]">
-          <DateSelector bookedDates={bookedDates} />
+          <DateSelector bookedDates={bookedDates} shack={shack} />
           <ReservationForm shack={shack} />
         </div>
       </div>
