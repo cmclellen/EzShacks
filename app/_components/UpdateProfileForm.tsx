@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { updateGuest } from "../_lib/actions";
 import { Guest } from "../_lib/types";
 import SubmitButton from "./SubmitButton";
@@ -10,7 +11,13 @@ type UpdateProfileFormProps = {
 };
 
 function UpdateProfileForm({ children, guest }: UpdateProfileFormProps) {
-  const { fullName, email, nationality, nationalID, countryFlag } = guest;
+  const {
+    fullName,
+    email,
+    nationality: _nationality,
+    nationalID,
+    countryFlag,
+  } = guest;
 
   return (
     <form
@@ -44,11 +51,14 @@ function UpdateProfileForm({ children, guest }: UpdateProfileFormProps) {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
-          <img
-            src={countryFlag}
-            alt="Country flag"
-            className="h-5 rounded-sm"
-          />
+          <div className="relative w-8 h-8">
+            <Image
+              src={countryFlag}
+              alt="Country flag"
+              className="h-5 rounded-sm object-cover"
+              fill
+            />
+          </div>
         </div>
         {children}
       </div>
