@@ -4,7 +4,7 @@
 
 I wanted to try out Next.js, so I created a web app for reserving fictitious holiday accommodation.
 
-Followed a very good tutorials on Udemy by Jonas Schmedtmann that helped me understand the core concepts, etc. The web app uses Superbase behind the scenes and Google for authentication. It's configured to deploy to Vercel on commits made to the repo.
+Followed a very good tutorial on Udemy by Jonas Schmedtmann that helped me understand the core concepts, etc. The web app uses Superbase behind the scenes and Google for authentication. It's configured to deploy to Vercel on commits made to the repo.
 
 ## Screenshots
 
