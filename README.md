@@ -16,7 +16,7 @@ Just a couple screenshots I took of the app running locally on my machine.
 
 ### Shack listing
 
-![Shack listing](docs/assets/shack-listing.png)
+![Shack listing](./docs/assets/shack-listing.png)
 
 ### Reservation listing
 
